@@ -28,8 +28,9 @@ puts "Store which carries Men's Apparel"
 end
 
 
-@womens_stores = Store.where({ womens_apparel: true, annual_revenue: 0..1000000})
+@womens_stores = Store.where({ womens_apparel: true}).where( "annual_revenue < ?", 1000000)
   p "Store which carries Womens's Apparel & less than 1mil revenue"
 @womens_stores.each do |m|
   p "Store name: #{m.name}. Annual Revenus: #{m.annual_revenue}"
 end
+
